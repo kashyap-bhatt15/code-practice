@@ -21,7 +21,7 @@ public class UniqueCharacterString {
 		return true;
 	}
 
-	public static boolean checkIfStringHasAllUniqueCharacters2(String str) {
+	static boolean checkIfStringHasAllUniqueCharacters2(String str) {
 		if (str.length() > 256) {
 			return false;
 		}
