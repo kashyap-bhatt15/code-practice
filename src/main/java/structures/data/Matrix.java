@@ -82,6 +82,34 @@ public class Matrix {
 		return rotatedMatrix;
 	}
 	
+	/*
+	 * Assumption: M (always) == N
+	 */
+	public Matrix rotate90DegreeInPlace() {
+		for(int layer = 0; layer < this.getWidth() / 2; ++layer) {
+			int first = layer;
+			int last = this.getWidth() - 1 - layer;
+			
+			for(int i = first; i < last; ++i) {
+				int offset = i - first;
+				
+				//save top
+				double top = this.getElement(first, i);
+				
+				// left -> top
+				this.setElement(first, i, this.getElement(last - offset, first));
+				// bottom -> left
+				this.setElement(last - offset, first, this.getElement(last, last - offset));
+				// right -> bottom
+				this.setElement(last, last - offset, this.getElement(i, last));
+				// top -> right
+				this.setElement(i, last, top);
+				
+			}
+		}
+		return this;
+	}
+	
 	public boolean equals(Matrix passedMatrix) {
 		if(passedMatrix.getWidth() != this.getWidth() || passedMatrix.getHeight() != this.getHeight())
 			return false;
