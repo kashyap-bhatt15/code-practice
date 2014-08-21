@@ -19,11 +19,11 @@ public class StringCompression {
 	}
 
 	public void setString(String str) {
+		compressedStr = "";
 		this.str = str;
 	}
 	
 	public String getCompressedStr() {
-		compressedStr = "";
 		int count = 1;
 		String currentOccurance = "";
 		for (int i = 0; i < this.str.length(); i++) {
